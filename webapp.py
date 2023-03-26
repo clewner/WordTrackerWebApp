@@ -12,6 +12,7 @@ import re
 
 app = Flask(__name__)
 
+
 @app.route("/", methods=['GET','POST'])
 def index():
     if request.method == 'POST':
@@ -63,7 +64,10 @@ def index():
                     tempstring = tempstring + "<br>" + actualtext
 
                     paragraphlist.append(tempstring)
-                
+            
+            for y in range(len(paragraphlist)):
+                for q in wordlistlist:
+                    paragraphlist[y] = re.sub(r"\b" + q + r"\b", "<span style='background-color:#FFFF00'>" + q + "</span>", paragraphlist[y])
 
         
 
