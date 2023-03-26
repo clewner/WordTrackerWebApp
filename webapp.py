@@ -79,3 +79,6 @@ def index():
 
     else:
         return render_template('home.html', enteredbook = "", enteredwords = "", paragraphs = "")
+
+if __name__ == "__main__":
+    app.run(debug=False,host='0.0.0.0')
