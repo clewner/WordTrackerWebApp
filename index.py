@@ -35,7 +35,7 @@ def index():
             soup = BeautifulSoup(page.content, "html.parser")
 
 
-            wordlist = request.form.get("wordlist")
+            wordlist = request.form.get("wordlist").lower()
             wordlistlist = wordlist.split('-')
 
             results = soup.findAll("p")
