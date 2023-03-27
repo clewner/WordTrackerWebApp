@@ -22,6 +22,9 @@ def index():
         bookname = request.form.get("bookname")
         bookname = bookname.replace(" ", "+")
 
+        if bookname == "":
+            bookname = "The+Scarlet+Letter"
+
         bookListUrl = "https://www.gutenberg.org/ebooks/search/?query=" + bookname.lower() + "&submit_search=Go%21"
         bookListPage = requests.get(bookListUrl)
         soupListPage = BeautifulSoup(bookListPage.content, "html.parser")
@@ -36,7 +39,11 @@ def index():
 
 
             wordlist = request.form.get("wordlist").lower()
+            if wordlist == "":
+                wordlist = "song-music-piano"
             wordlistlist = wordlist.split('-')
+
+            
 
             results = soup.findAll("p")
 
