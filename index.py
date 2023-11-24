@@ -33,7 +33,7 @@ def index():
             bookTypePage = requests.get(bookTypeUrl)
             soupTypePage = BeautifulSoup(bookTypePage.content, "html.parser")
 
-            URL = "https://www.gutenberg.org" + soupTypePage.find('a', string='Read this book online: HTML5')['href']
+            URL = "https://www.gutenberg.org" + soupTypePage.find('a', string='Read online (web)')['href']
             page = requests.get(URL)
             soup = BeautifulSoup(page.content, "html.parser")
 
